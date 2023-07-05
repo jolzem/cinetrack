@@ -16,7 +16,6 @@ $conn = new mysqli($env["HOST"], $env["DBUSER"], $env["DBPASS"], $env["TABLE"]);
 if($conn->connect_error) {
   die("Database connection failed: " . $conn->connect_error);
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +24,11 @@ if($conn->connect_error) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <h1>CineTrack</h1>
   <h2>Willkommen, <?php echo $username; ?>!</h2>
   <a href="logout.php">Logout</a>
   <br>
-
+  <h3>Search Movies, Shows and more...</h3>
   <form method="post" action="search.php">
     <input type="text" placeholder="Title" name="term" required>
     <input value="Search" type="submit">
