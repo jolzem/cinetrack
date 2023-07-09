@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["username"])) {
+  header("Location: /"); // Redirect to the login page if not logged in
+  exit;
+}
+
+$username = $_SESSION["username"];
 require_once 'vendor/autoload.php';
 
 $env = parse_ini_file(".env");
@@ -16,9 +24,6 @@ $response = $client->request('GET', 'https://api.themoviedb.org/3/search/multi?q
   ],
 ]);
 $json = json_decode($response->getBody(), true)["results"];
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +39,6 @@ $json = json_decode($response->getBody(), true)["results"];
   <table style="border: thin solid black;border-collapse: collapse;">
     <tr>
     <?php
-
     foreach($json as $data) {
       if(strcasecmp($data["media_type"], "person") === 0) { continue; }
       echo "<td style='border: thin solid black;'><img src='https://image.tmdb.org/t/p/original";
@@ -62,11 +66,12 @@ $json = json_decode($response->getBody(), true)["results"];
     foreach($json as $data) {
       if(strcasecmp($data["media_type"], "person") === 0) { continue; }
       echo "<td style='border: thin solid black;'>";
-      echo "<form>";
-      echo "<input type='number' name='season' id='season' value='1' min='1' style='width:5ch' required>";
-      echo "<input type='number' name='episode' id='episode' value='1' min='1' style='width:5ch' required>";
-      echo "<label for='season'>S</label>";
-      echo "<label for='episode'>Ep</label><br>";
+      echo "<form method='post' action='add.php'>";
+      echo "<label>S</label>";
+      echo "<label>Ep</label><br>";
+      echo "<input value='" . $data["name"] . $data["title"] . "' style='width:0;height:0;border:none;padding:0 !important;' name='title' required>";
+      echo "<input type='number' name='season' value='1' min='1' style='width:5ch' required>";
+      echo "<input type='number' name='episode' value='1' min='1' style='width:5ch' required>";
       echo "<input type='submit' value='Add/Change'><br>";
       echo "</form>";
       echo "</td>";
