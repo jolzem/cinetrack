@@ -9,7 +9,7 @@ if (!isset($_SESSION["username"])) {
 $username = $_SESSION["username"];
 require_once 'vendor/autoload.php';
 
-$env = parse_ini_file(".env");
+$env = parse_ini_file("config/.env");
 
 // start http client
 $client = new GuzzleHttp\Client();
@@ -60,7 +60,7 @@ $json = json_decode($response->getBody(), true)["results"];
           echo ($data["first_air_date"] != null) ? " (" . explode("-", $data["first_air_date"])[0] . ")" : '';
         ?>
         </p>
-        <form method='post' action='add.php'>
+        <form method='post' action='/backend/add.php'>
           <input value='<?php echo $data["name"] . $data["title"]; ?>' class='invisible_input' name='title' required>
           <input type='number' name='season' value='1' min='1' required>
           <input type='number' name='episode' value='1' min='1' required>
@@ -69,7 +69,6 @@ $json = json_decode($response->getBody(), true)["results"];
       </div>
     <?php endforeach ?>
   </div>
-
 
   <?php else: ?>
   <h2>Nothing found...</h2>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$env = parse_ini_file(".env");
+$env = parse_ini_file("../config/.env");
 
 // Connect to db
 $conn = new mysqli($env["HOST"], $env["DBUSER"], $env["DBPASS"], $env["TABLE"]);
@@ -11,7 +11,6 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // When user posts data
-
   $username = $_POST["username"];
   $password = $_POST["password"];
 
@@ -23,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // When user posts data
 
     if ($password == $dbPassword) {
       $_SESSION["username"] = $username;
-      header("Location: dashboard.php");
+      header("Location: /dashboard.php");
     } else {
       header("Location: /?wrongpass");
       die;

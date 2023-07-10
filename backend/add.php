@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 
 $username = $_SESSION["username"];
 
-$env = parse_ini_file(".env");
+$env = parse_ini_file("../config/.env");
 
 // Connect to db
 $conn = new mysqli($env["HOST"], $env["DBUSER"], $env["DBPASS"], $env["TABLE"]);
@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 
 $user_id = $conn->query("SELECT * FROM users WHERE username = '$username'")->fetch_assoc()["id"];
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 // start http client
 $client = new GuzzleHttp\Client();
@@ -33,6 +33,7 @@ $response = $client->request('GET', 'https://api.themoviedb.org/3/search/multi?q
   ],
 ]);
 $json = json_decode($response->getBody(), true)["results"][0];
+
 
 $season = $_POST["season"];
 $episode = $_POST["episode"];
@@ -50,7 +51,6 @@ if($result) {
   exit;
 } else {
   $conn->close();
-  echo "Error inserting value into database";
+  die("Error inserting value into database");
 }
-
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$env = parse_ini_file(".env");
+$env = parse_ini_file("../config/.env");
 
 // Connect to db
 $conn = new mysqli($env["HOST"], $env["DBUSER"], $env["DBPASS"], $env["TABLE"]);
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // When user posts data
   }
 
   $_SESSION["username"] = $username;
-  header("Location: dashboard.php");
+  header("Location: /dashboard.php");
   $conn->close();
   exit;
 }
