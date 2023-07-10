@@ -1,0 +1,6 @@
+- ~~Register backend~~
+- Edit Profile:
+  - Change Password
+  - Delete Account
+- ~~Search Result mobile friendly~~
+- ~~fix number input~~

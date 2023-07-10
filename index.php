@@ -8,6 +8,7 @@
   <title>Login - Cinetrack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="icon" type="image/x-icon" href="/favico.ico">
 </head>
 <body>
   <header>
@@ -31,5 +32,7 @@
   ?>
   </p>
 
+  <p>or</p>
+  <a class='btn' href='register.php'>Register</a>
 </body>
 </html>

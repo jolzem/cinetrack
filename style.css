@@ -11,32 +11,46 @@
 
 /* CSS */
 @font-face {
-  font-family: 'Fira Sans';
-  src: url('fonts/FiraSans-Regular.woff2');
+  font-family: 'Source Sans Pro';
+  src: url('fonts/SourceSansPro-Regular.ttf.woff2');
+}
+
+:root {
+  --red: #fe5f55;
+  --bg-1: #2b5876;
+  --bg-2: #4e4376;
+  --text: #d8d8f6;
+  --darker: #7f9c96;
+  --font: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
-  background: #0f0c29; /* fallback for old browsers */
-  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background: var(--bg-1); /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, var(--bg-1), var(--bg-2)); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, var(--bg-1), var(--bg-2)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 body {
-  color: #eee;
-  font-family: 'Fira Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  color: var(--text);
+  font-family: var(--font);
   text-align: center;
   margin: 0 auto;
 }
 
 a {
-  color: #eee;
+  color: var(--text);
 }
 
 header {
-  background: #00000088;
+  background: rgba(0, 0, 0, 50);
   backdrop-filter: blur(12px);
   margin: 0;
   padding: .5rem;
   text-align: left;
+}
+
+.error {
+  color: var(--red);
 }
 
 div {
@@ -93,10 +107,10 @@ form {
 }
 
 .popup-content {
-  background-color: #24243e;
+  background-color: var(--bg-1);
   margin: 10% auto;
   padding: 20px;
-  border: thin solid #888;
+  border: thin solid var(--darker);
   border-radius: 1rem;
   width: 80%;
   max-width: 60vw;
@@ -104,7 +118,7 @@ form {
 }
 
 .close {
-  color: #888;
+  color: var(--darker);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -113,7 +127,7 @@ form {
 
 .close:hover,
 .close:focus {
-  color: #eee;
+  color: var(--text);
   text-decoration: none;
   cursor: pointer;
 }
@@ -121,10 +135,51 @@ form {
 input[type=text],
 input[type=password],
 input[type=submit],
-input[type=number] {
+input[type=number],
+.btn {
   background: rgba(0, 0, 0, 0.5);
-  border: thin solid #888;
+  border: thin solid var(--darker);
   padding: .5rem;
-  color: #eee;
+  color: var(--text);
   border-radius: 1rem;
+  text-decoration: none;
+  font-family: var(--font);
+  font-size: 100%;
+  transition: background 200ms;
 }
+
+input[type=number] {
+  padding: .5rem 1.5rem;
+}
+
+input[type=submit]:hover,
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=password]:hover,
+input[type=password]:focus,
+.btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  outline: none;
+}
+
+input[type=submit]:active,
+.btn:active {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.poster {
+  width: 12rem;
+}
+
+.invisible_input {
+  width: 0;
+  height: 0;
+  border: none;
+  padding: 0 !important;
+}
+
+input[type=number] {
+  width: 10ch;
+}
+
+
