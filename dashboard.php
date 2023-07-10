@@ -66,6 +66,10 @@ $table = $conn->query("SELECT * FROM user" . $user_id . " ORDER BY name;");
                 <input type='number' name='episode' value='<?php echo $row["episode"];?>' min='1' required>
                 <input type='submit' value='Update'>
               </form>
+              <form method='post' action='/backend/remove.php'>
+                <input value='<?php echo $row["name"];?>' class='invisible_input' name='title' required>
+                <input type='submit' value='&#128465;'>
+              </form>
             </div>
           </div>
         </div>
