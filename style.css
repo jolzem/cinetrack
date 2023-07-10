@@ -49,6 +49,16 @@ header {
   text-align: left;
 }
 
+.settings-link {
+  float: right;
+  font-size: 175%;
+  text-decoration: none;
+  min-height: 3rem;
+  display: flex;
+  padding: 0 .5rem;
+  align-items: center;
+}
+
 .error {
   color: var(--red);
 }
@@ -136,6 +146,7 @@ input[type=text],
 input[type=password],
 input[type=submit],
 input[type=number],
+input[type=button],
 .btn {
   background: rgba(0, 0, 0, 0.5);
   border: thin solid var(--darker);
@@ -149,10 +160,12 @@ input[type=number],
 }
 
 input[type=number] {
-  padding: .5rem 1.5rem;
+  padding: .5rem 1rem;
+  width: 13ch;
 }
 
 input[type=submit]:hover,
+input[type=button]:hover,
 input[type=text]:hover,
 input[type=text]:focus,
 input[type=password]:hover,
@@ -177,9 +190,4 @@ input[type=submit]:active,
   border: none;
   padding: 0 !important;
 }
-
-input[type=number] {
-  width: 10ch;
-}
-
 

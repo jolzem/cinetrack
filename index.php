@@ -32,7 +32,8 @@ if(isset($_SESSION["username"])) {
   <p class="error">
   <?php
     if(isset($_GET["notfound"])) echo "User not found.";
-    if(isset($_GET["wrongpass"])) echo "Wrong Password.";
+    if(isset($_GET["wrongpass"])) echo "Wrong password.";
+    if(isset($_GET["deleted"])) echo "Account deleted.";
   ?>
   </p>
 
