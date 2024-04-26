@@ -50,7 +50,10 @@ $table = $conn->query("SELECT * FROM user" . $user_id . " ORDER BY name;");
     $i = 0;
     while($row = $table->fetch_assoc()):
   ?>
-  <div><img src='https://image.tmdb.org/t/p/original<?php echo $row["poster"];?>' class='poster' alt='<?php echo $row["name"];?>' onclick='openPopup(<?php echo $i;?>)'></div>
+  <div class='entry'>
+    <img src='https://image.tmdb.org/t/p/original<?php echo $row["poster"];?>' class='poster' alt='<?php echo $row["name"];?>' onclick='openPopup(<?php echo $i;?>)'>
+    <div class='info'>Season <span><?php echo $row["season"]; ?></span><br>Episode <span><?php echo $row["episode"]; ?></span> </div>
+  </div>
 
     <div id='popup<?php echo $i;?>' class='popup'>
         <div class='popup-content'>

@@ -103,6 +103,32 @@ form {
   border-radius: 1rem;
 }
 
+.entry {
+  position: relative;
+  text-align: center;
+}
+
+.info {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  transition: opacity 200ms;
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  width: calc(100% - 2rem);
+}
+
+.info span {
+  font-size: 150%;
+}
+
+.entry:hover > .info {
+  opacity: 1;
+}
+
 .popup {
   display: none;
   position: fixed;
